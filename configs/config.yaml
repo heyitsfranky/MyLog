@@ -1,0 +1,2 @@
+kafka-broker: localhost:9092
+client-origin: Test
