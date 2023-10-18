@@ -10,7 +10,7 @@ import (
 	"github.com/segmentio/kafka-go"
 )
 
-var data *InitData
+var Data *InitData
 
 type InitData struct {
 	KafkaBroker  string `yaml:"kafka-broker"`
@@ -20,13 +20,13 @@ type InitData struct {
 type LogData struct {
 	Body   interface{} `json:"body"`
 	Origin string      `json:"origin"`
-	Type   string      `json:"type"`
+	Caller string      `json:"caller"`
 	Level  int         `json:"level"`
 }
 
 func Init(configPath string) error {
-	if data == nil {
-		err := myConfig.Init(configPath, &data)
+	if Data == nil {
+		err := myConfig.Init(configPath, &Data)
 		if err != nil {
 			return err
 		}
@@ -34,20 +34,20 @@ func Init(configPath string) error {
 	return nil
 }
 
-func createEvent(body interface{}, givenType string, level int, async bool) error {
-	if data == nil {
+func CreateEvent(body interface{}, caller string, level int, async bool) error {
+	if Data == nil {
 		return fmt.Errorf("must first call Init() to initialize the kafka settings")
 	}
 	writer := kafka.NewWriter(kafka.WriterConfig{
-		Brokers:  []string{data.KafkaBroker},
+		Brokers:  []string{Data.KafkaBroker},
 		Topic:    "create_log",
 		Balancer: &kafka.LeastBytes{},
 	})
 	defer writer.Close()
 	logData := LogData{
 		Body:   body,
-		Origin: data.ClientOrigin,
-		Type:   givenType,
+		Origin: Data.ClientOrigin,
+		Caller: caller,
 		Level:  level,
 	}
 	jsonString, err := json.Marshal(logData)
@@ -78,15 +78,15 @@ func createEvent(body interface{}, givenType string, level int, async bool) erro
 }
 
 // these functions are just used to create simple, fast logs
-func createInfoEvent(body string, givenType string) {
-	createEvent(body, givenType, 0, true)
+func CreateInfoEvent(body string, givenType string) {
+	CreateEvent(body, givenType, 0, true)
 }
-func createWarningEvent(body string, givenType string) {
-	createEvent(body, givenType, 1, true)
+func CreateWarningEvent(body string, givenType string) {
+	CreateEvent(body, givenType, 1, true)
 }
-func createErrorEvent(body string, givenType string) {
-	createEvent(body, givenType, 2, true)
+func CreateErrorEvent(body string, givenType string) {
+	CreateEvent(body, givenType, 2, true)
 }
-func createCriticalEvent(body string, givenType string) {
-	createEvent(body, givenType, 3, true)
+func CreateCriticalEvent(body string, givenType string) {
+	CreateEvent(body, givenType, 3, true)
 }
