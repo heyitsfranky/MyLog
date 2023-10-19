@@ -4,6 +4,8 @@ import (
 	"testing"
 )
 
+const CONFIG_DIR_PATH = "configs/"
+
 func Test_Init(t *testing.T) {
 	tests := []struct {
 		name      string
@@ -17,7 +19,7 @@ func Test_Init(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			Data = nil
-			err := Init("../../configs/" + tt.config)
+			err := Init(CONFIG_DIR_PATH + tt.config)
 			if err == nil && tt.expectErr {
 				t.Errorf("Expected an error but got nil")
 			} else if err != nil && !tt.expectErr {
@@ -28,7 +30,7 @@ func Test_Init(t *testing.T) {
 }
 
 func Test_CreateEvent(t *testing.T) {
-	Init("../../configs/config.yaml")
+	Init(CONFIG_DIR_PATH + "config.yaml")
 	tests := []struct {
 		name      string
 		body      interface{}
