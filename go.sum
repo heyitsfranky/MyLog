@@ -3,6 +3,8 @@ github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/heyitsfranky/MyConfig v1.1.0 h1:dzpKwRwNbkZsEiyqKHf70xKKUltusFY8dM4HLlGwpd0=
 github.com/heyitsfranky/MyConfig v1.1.0/go.mod h1:OGybnPK7+A97/MYDNav/0upCitoQ1L7rUPlxAe4G7+I=
+github.com/heyitsfranky/MyConfig v1.2.0 h1:hQIDnMGc/l9sbgYzsZxtvEFxwhaDgfl2FddrY2IASI8=
+github.com/heyitsfranky/MyConfig v1.2.0/go.mod h1:OGybnPK7+A97/MYDNav/0upCitoQ1L7rUPlxAe4G7+I=
 github.com/klauspost/compress v1.15.9 h1:wKRjX6JRtDdrE9qwa4b/Cip7ACOshUI4smpCQanqjSY=
 github.com/klauspost/compress v1.15.9/go.mod h1:PhcZ0MbTNciWF3rruxRgKxI5NkcHHrHUDtV4Yw2GlzU=
 github.com/pierrec/lz4/v4 v4.1.15 h1:MO0/ucJhngq7299dKLwIMtgTfbkoSPF6AoMYDd8Q4q0=

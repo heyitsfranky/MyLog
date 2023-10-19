@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/heyitsfranky/MyConfig/src/myConfig"
+	"github.com/heyitsfranky/MyConfig"
 	"github.com/segmentio/kafka-go"
 )
 
@@ -26,7 +26,7 @@ type LogData struct {
 
 func Init(configPath string) error {
 	if Data == nil {
-		err := myConfig.Init(configPath, &Data)
+		err := MyConfig.Init(configPath, &Data)
 		if err != nil {
 			return err
 		}
