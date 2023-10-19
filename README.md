@@ -25,21 +25,21 @@ func main() {
 	configFilePath := "path/to/your/config.yaml"
 
 	// Initialize MyLog with the configuration file
-	if err := myLog.Init(configFilePath); err != nil {
+	if err := MyLog.Init(configFilePath); err != nil {
 		fmt.Printf("Error initializing MyLog: %s\n", err)
 		return
 	}
     // Create a intricate log event asynchronously
 	body := map[string]interface{}{"msg": "hello world!", "id": 42}
-	myLog.CreateEvent(body, "main()", 0, true)
+	MyLog.CreateEvent(body, "main()", 0, true)
 	// (or synchronously)
-	myLog.CreateEvent(body, "main()", 0, false)
+	MyLog.CreateEvent(body, "main()", 0, false)
     
     // Create predefined log events asynchronously
-	myLog.CreateInfoEvent("This is an informational message", "MyPackage::main()")
-	myLog.CreateWarningEvent("This is a warning message", "somefn()")
-	myLog.CreateErrorEvent("This is an error message", "foobar()")
-	myLog.CreateCriticalEvent("This is a critical error message", "MyClass.hello()")
+	MyLog.CreateInfoEvent("This is an informational message", "MyPackage::main()")
+	MyLog.CreateWarningEvent("This is a warning message", "somefn()")
+	MyLog.CreateErrorEvent("This is an error message", "foobar()")
+	MyLog.CreateCriticalEvent("This is a critical error message", "MyClass.hello()")
 }
 ```
 
