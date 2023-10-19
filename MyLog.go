@@ -1,4 +1,4 @@
-package myLog
+package MyLog
 
 import (
 	"context"
