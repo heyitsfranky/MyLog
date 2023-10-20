@@ -78,15 +78,15 @@ func CreateEvent(body interface{}, caller string, level int, async bool) error {
 }
 
 // these functions are just used to create simple, fast logs
-func CreateInfoEvent(body string, givenType string) {
-	CreateEvent(body, givenType, 0, true)
+func CreateInfoEvent(body string, caller string) {
+	CreateEvent(body, caller, 0, true)
 }
-func CreateWarningEvent(body string, givenType string) {
-	CreateEvent(body, givenType, 1, true)
+func CreateWarningEvent(body string, caller string) {
+	CreateEvent(body, caller, 1, true)
 }
-func CreateErrorEvent(body string, givenType string) {
-	CreateEvent(body, givenType, 2, true)
+func CreateErrorEvent(body string, caller string) {
+	CreateEvent(body, caller, 2, true)
 }
-func CreateCriticalEvent(body string, givenType string) {
-	CreateEvent(body, givenType, 3, true)
+func CreateCriticalEvent(body string, caller string) {
+	CreateEvent(body, caller, 3, true)
 }
