@@ -43,7 +43,9 @@ func CreateEvent(body interface{}, caller string, level int, async bool) error {
 		Topic:    "create_log",
 		Balancer: &kafka.LeastBytes{},
 	})
-	defer writer.Close()
+	if !async { //necessary as otherwise the writer is closed as soon as the function ends
+		defer writer.Close()
+	}
 	logData := LogData{
 		Body:   body,
 		Origin: Data.ClientOrigin,
@@ -59,13 +61,13 @@ func CreateEvent(body interface{}, caller string, level int, async bool) error {
 		Key:   []byte(fmt.Sprintf("key-%d", time.Now().Unix())),
 		Value: []byte(jsonString),
 	}
-
 	if async {
 		go func() {
 			err := writer.WriteMessages(context.Background(), message)
 			if err != nil {
 				fmt.Println("Error sending message asynchronously:", err)
 			}
+			writer.Close()
 		}()
 	} else {
 		err := writer.WriteMessages(context.Background(), message)

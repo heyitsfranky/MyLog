@@ -2,6 +2,7 @@ package MyLog
 
 import (
 	"testing"
+	"time"
 )
 
 const CONFIG_DIR_PATH = "configs/"
@@ -45,6 +46,7 @@ func Test_CreateEvent(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			err := CreateEvent(tt.body, tt.caller, tt.level, tt.async)
+			time.Sleep(20 * time.Second)
 			if err == nil && tt.expectErr {
 				t.Errorf("Expected an error but got nil")
 			} else if err != nil && !tt.expectErr {
