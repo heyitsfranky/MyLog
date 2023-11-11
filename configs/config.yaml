@@ -1,2 +1,2 @@
-kafka-broker: localhost:9092
-client-origin: test
+kafka_broker: localhost:9092
+client_origin: test

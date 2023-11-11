@@ -13,8 +13,8 @@ import (
 var Data *InitData
 
 type InitData struct {
-	KafkaBroker  string `yaml:"kafka-broker"`
-	ClientOrigin string `yaml:"client-origin"`
+	KafkaBroker  string `yaml:"kafka_broker"`
+	ClientOrigin string `yaml:"client_origin"`
 }
 
 type LogData struct {
